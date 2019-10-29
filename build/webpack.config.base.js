@@ -1,24 +1,28 @@
 const 
-    webpack = require('webpack'),
-    path = require('path'),
-    HtmlPlugin = require('html-webpack-plugin'),
+    webpack = require('webpack')
+    ,path = require('path')
+    ,HtmlPlugin = require('html-webpack-plugin')
 
-    Config = require('../config')
-
-    index = require('../src/index')
-
+    ,Config = require('../config')
     
-console.log('fffffff');
+
+    // is develop environment
+    ,DEV = process.env.NODE_ENV === 'development' 
+    
+    ,resolveFn = (p) => path.resolve(p)
+    
+
 
 const config = {
-    entry: [
+    mode: DEV ? 'development' : 'production',
+    entry: [ 
         'react-hot-loader/patch',
         './src/index.js'       
     ],
     output: {
         filename: '[name].[hash].js',
-        path: path.join(__dirname, Config.dev.buildPath),
-        publicPath: Config.dev.publicPath
+        path: resolveFn(Config.dev.buildPath),
+        // publicPath: Config.dev.publicPath
     },
     module: {
         rules: [
@@ -31,7 +35,7 @@ const config = {
     },
     plugins: [
         new HtmlPlugin({
-            template: path.join(__dirname, 'index.html')
+            template: resolveFn('index.html')
         }),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),

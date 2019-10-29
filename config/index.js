@@ -9,6 +9,6 @@ module.exports = {
         port: "1212",
         autoOpenBrowser: false,
         assetsPublicPath: "/public",
-        buildPath: "/dist",
+        buildPath: "dist",
     }
 }

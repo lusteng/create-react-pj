@@ -9,7 +9,14 @@ export default class App extends React.Component{
         }
     }
 
+     
+    handleAdd(){
+        let {a} = this.state 
+        a++
+        this.setState({a})
+    }  
+
     render(){
-        return <div>{a}</div>
+        return <div onClick={this.handleAdd.bind(this)}>{this.state.a}</div>
     }
 }

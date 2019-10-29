@@ -1,17 +1,16 @@
 const 
-    path = require('path'),
-    BaseConfig = require('./webpack.config.base'),
-    Config = require('../config')
-
-console.log('fffffff');
+    path = require('path')
+    ,BaseConfig = require('./webpack.config.base')
+    ,Config = require('../config')  
 
 const config = { 
     ...BaseConfig,
     devServer: {
         host: Config.dev.host,
         port: Config.dev.port,
-        contentBase: path.join(__dirname, '../dist'),  //devserver root 目录
+        contentBase: path.resolve(__dirname, '../dist'),  //devserver root 目录
         hot: true,
+        compress: true,
         overlay:{
             error: true  //显示错误信息
         }, 
@@ -21,7 +20,5 @@ const config = {
         // } 
     }
 }
-
-console.log(config);
 
 module.exports = config

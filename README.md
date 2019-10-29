@@ -32,6 +32,10 @@ cnpm i cross-env -D
 cnpm i html-webpack-plugin -D
 ···
  
++ 安装删除文件夹插件
+```
+npm install rimraf --save-dev
+``` 
 
 + 安装react 套件
 ```
@@ -42,6 +46,16 @@ cnpm i html-webpack-plugin -D
 build >> 打包配置文件
 +webpack.config.dev.js 开发环境
 +webpack.config.prod.js 生产环境
+
+### 目录
+lib --- 第三方插件库
+src/components --- 公共组件库-脱离业务层面
+src/views  --- 项目页面层划分/业务量大为模块划分
+
+
+
+
+
 
 
 
